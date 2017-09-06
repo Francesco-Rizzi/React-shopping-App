@@ -1,0 +1,151 @@
+.app {
+	text-align     : center;
+	min-width      : 300px;
+	padding-bottom : 100px;
+	font-size      : 16px;
+}
+
+.app-wrap {
+	transition : .3s;
+}
+
+.app-wrap.mod-editing {
+	opacity        : .3;
+	pointer-events : none;
+}
+
+.app-header {
+	background-color : #222222;
+	padding          : 60px;
+	color            : white;
+	box-sizing       : border-box;
+	overflow         : hidden;
+}
+
+.app-list {
+	list-style : none;
+	padding    : 30px 30px 0;
+	max-width  : 1024px;
+	margin     : 0 auto;
+}
+
+.app-list-item {
+	padding         : 20px 30px;
+	margin-bottom   : 40px;
+	border          : 1px solid #A1A1A1;
+	display         : flex;
+	justify-content : space-between;
+	align-items     : center;
+}
+
+button {
+	padding            : 15px 30px;
+	color              : white;
+	background         : dodgerblue;
+	transition         : .3s;
+	-webkit-appearance : none;
+	-moz-appearance    : none;
+	appearance         : none;
+	border             : none;
+	cursor             : pointer;
+	text-transform     : uppercase;
+	font-weight        : bold;
+}
+
+button.mod-cancel {
+	margin-right : 20px;
+	background   : indianred;
+}
+
+button.mod-disabled {
+	cursor     : not-allowed;
+	background : gray;
+}
+
+button:hover.mod-disabled {
+	background : gray;
+}
+
+button:hover {
+	background : #0F4A85;
+}
+
+button.mod-cancel:hover {
+	background : #833C3C;
+}
+
+.app-list-item-price.mod-discount {
+	color : darkred;
+}
+
+.action-modal {
+	position   : fixed;
+	top        : 50%;
+	left       : 50%;
+	z-index    : 999;
+	padding    : 30px;
+	transform  : translateX(-50%) translateY(-50%);
+	background : #EEEEEE;
+	display    : flex;
+	flex-flow  : column;
+}
+
+.action-modal-input {
+	padding   : 10px;
+	margin    : 30px 0;
+	min-width : 300px;
+}
+
+.action-nav {
+	display         : flex;
+	position        : fixed;
+	bottom          : 0;
+	width           : 100%;
+	z-index         : 99;
+	background      : #EEEEEE;
+	align-items     : center;
+	justify-content : space-between;
+	padding         : 30px;
+	max-width       : 1024px;
+	left            : 50%;
+	transform       : translateX(-50%);
+	box-sizing      : border-box;
+}
+
+.action-nav-cta {
+	display : flex;
+}
+
+.recipe-modal {
+	position   : fixed;
+	top        : 50%;
+	left       : 50%;
+	z-index    : 9999;
+	padding    : 30px;
+	transform  : translateX(-50%) translateY(-50%);
+	background : #EEEEEE;
+	display    : flex;
+	flex-flow  : column;
+}
+
+.recipe-modal-body {
+	padding    : 30px 0;
+	text-align : left;
+}
+
+.recipe-modal-body td {
+	min-width : 100px;
+}
+
+.recipe-modal-body thead td {
+	font-weight    : bold;
+	padding-bottom : 15px;
+}
+
+.recipe-modal-title {
+	font-size : 22px;
+}
+
+.recipe-modal-body-total{
+	font-style: italic;
+}
