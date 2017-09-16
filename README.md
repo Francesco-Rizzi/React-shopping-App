@@ -1,11 +1,11 @@
 # React shopping App 🛒 (full customer lifecycle)
 
-#### \[this is just an exercise\]
+###### \[this is just an exercise\]
 
 #### Description:
 An imaginary shopping app.
 
-Context:
+#### Context:
 
 I tried to imagine this app in a **supermarket context**, where there are **touch-screen stations** where (using this software) people can select, order and pre-pay their virtual shopping basket.
 Then **the supermarket staff collect the items** from the warehouse and give them to **the buyers** (maybe it could fit good in the vegetables section of a supermarket, so people don’t have to touch, weigh and collect fruits and vegetables themselves, but **just select, pay and find their shopping when leaving**).
@@ -22,7 +22,7 @@ All transitions are CSS based.
 - Babel
 - Webpack
 - Yarn 🐈
-- create with [react-create-app](https://github.com/facebookincubator/create-react-app)
+- created with [react-create-app](https://github.com/facebookincubator/create-react-app)
 
 #### How to use:
 - download
