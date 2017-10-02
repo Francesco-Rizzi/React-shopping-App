@@ -11,4 +11,5 @@ let store = createStore(shoppingBasketApp);
 ReactDOM.render(<Provider store={store}>
 					<App />
 				</Provider>, document.getElementById('root'));
-registerServiceWorker();
+
+//registerServiceWorker(); <-- NEED HTTPS
