@@ -2,10 +2,11 @@ import _ from 'lodash';
 
 const initialState = {
 	items     : {},
-	editingId : false
+	editingId : false,
+	clientId  : 1
 };
 
-let fetchedItems={};
+let fetchedItems = {};
 
 export default function shoppingBasketApp( state = initialState, action ){
 	switch ( action.type ) {
@@ -37,7 +38,14 @@ export default function shoppingBasketApp( state = initialState, action ){
 			
 			return {
 				...state,
-				items: _.cloneDeep(fetchedItems)
+				items : _.cloneDeep(fetchedItems)
+			};
+		
+		case 'UPDATE_CLIENT_ID':
+			
+			return {
+				...state,
+				clientId : state.clientId + 1
 			};
 		
 		default:

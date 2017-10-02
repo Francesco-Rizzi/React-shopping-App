@@ -1,15 +1,19 @@
-# React shopping App 🛒 (full customer lifecycle)
+# React shopping App 🛒
 
 ###### \[this is just an exercise\]
 
 #### Description:
-An imaginary shopping app.
-
-#### Context:
+A React with Redux exercise on creating a shopping app. [try it live](http://francescorizzi.info/experiments/react-shopping-app)
 
 I tried to imagine this app in a **supermarket context**, where there are **touch-screen stations** where (using this software) people can select, order and pre-pay their virtual shopping basket.
-Then **the supermarket staff collect the items** from the warehouse and give them to **the buyers** (maybe it could fit good in the vegetables section of a supermarket, so people don’t have to touch, weigh and collect fruits and vegetables themselves, but **just select, pay and find their shopping when leaving**).
-The flow is simple, select (buy) or edit (edit) what you like, then checkout (checkout) and get your recipe (in this context, someone buys something, then he gets the recipe (maybe printed by the station) and then **the software auto-reset itself for a new customer**).
+
+ **The supermarket staff collect the items** from the warehouse and give them to **the customers**.
+
+ Maybe it could fit well in the vegetables section of a supermarket, so people don’t have to touch and collect fruits and vegetables themselves, but **just select, pay and find their shopping when leaving**.
+
+The flow is simple, select or edit what you like, then checkout and get your recipe.
+
+ The station will print the repice and then **the software auto-reset itself for a new customer** (updating the customer ID as well).
 
 Redux manages the state and takes care of keeping all the different UI components updated.
 All transitions are CSS based.
@@ -25,6 +29,5 @@ All transitions are CSS based.
 - created with [react-create-app](https://github.com/facebookincubator/create-react-app)
 
 #### How to use:
-- download
+- download (or see it live [here](http://francescorizzi.info/experiments/react-shopping-app))
 - `yarn install && yarn start`
-- enjoy 🤘

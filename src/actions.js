@@ -25,6 +25,30 @@ export function fetchItems(){
 			price    : '0.50',
 			discount : '40',
 			quantity : 0
+		} , {
+			name     : 'Watermelons',
+			id       : 5,
+			price    : '2.50',
+			discount : 0,
+			quantity : 0
+		} , {
+			name     : 'Strawberries',
+			id       : 6,
+			price    : '0.12',
+			discount : 0,
+			quantity : 0
+		} , {
+			name     : 'Pumpkins',
+			id       : 7,
+			price    : '4.00',
+			discount : 0,
+			quantity : 0
+		} , {
+			name     : 'Tomatoes',
+			id       : 8,
+			price    : '0.20',
+			discount : '20',
+			quantity : 0
 		} ]
 	}
 }
@@ -45,9 +69,15 @@ export function editItem( id, quantity ){
 	}
 }
 
-export function selectItem( id){
+export function selectItem( id ){
 	return {
 		type : 'SELECT_ITEM',
 		id
+	}
+}
+
+export function updateClientId(){
+	return {
+		type : 'UPDATE_CLIENT_ID',
 	}
 }

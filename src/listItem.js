@@ -14,7 +14,7 @@ export default class ListItem extends Component {
 	createDiscount( item ){
 		if ( item.discount > 0 ) {
 			return <span className="app-list-item-price mod-discount">
-				<del>{item.price}</del> {PriceCalc.getItemFinalPrice(item)}$ ({item.discount}% off!)</span>
+				<del>{item.price}</del> {PriceCalc.getItemFinalPrice(item)}$ <span>{item.discount}% off!</span></span>
 		}
 		return <span className="app-list-item-price">{item.price}$</span>
 	}

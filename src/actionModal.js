@@ -14,7 +14,7 @@ export default class ActionModal extends Component {
 		
 		if ( item ) {
 			return <div className="action-modal">
-				<div className="action-modal-title">Select how many {item.name} you want</div>
+				<div className="action-modal-title">Select how many <b>{item.name}</b> you want</div>
 				<input className="action-modal-input" type="number" min={0} max={100} value={this.state.quantity} onChange={this.handleChange.bind(this)} />
 				<div className="action-modal-cta">
 					<button onClick={this.onCancel.bind(this)} className="mod-cancel">cancel</button>

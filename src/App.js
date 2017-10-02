@@ -1,18 +1,17 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {fetchItems, selectItem, editItem, reset} from './actions';
+import {fetchItems, selectItem, editItem, reset, updateClientId} from './actions';
 import ListItem from './listItem';
 import ActionModal from './actionModal';
 import ActionNav from './actionNav';
 import RecipeModal from './recipeModal';
 import _ from 'lodash';
-import './App.css';
 
 class App extends Component {
 	
-	constructor(props){
+	constructor( props ){
 		super(props);
-		this.state={recipeModal: false};
+		this.state = {recipeModal : false};
 	}
 	
 	render(){
@@ -20,8 +19,9 @@ class App extends Component {
 			<div className="app">
 				<div className={"app-wrap" + ((this.props.editing || this.state.recipeModal) ? ' mod-editing' : '')}>
 					<div className="app-header">
-						<h1>ACME Market</h1>
-						<h3>- select your items before checkout -</h3>
+						<h1>React ACME Market 🛒</h1>
+						<h2>&bull; select your items before checkout &bull;</h2>
+						<h3>&bull; now serving number: {this.props.clientId} &bull;</h3>
 					</div>
 					<div className='app-body'>
 						<ul className="app-list">
@@ -32,7 +32,8 @@ class App extends Component {
 					<ActionNav items={this.props.items} onReset={this.onReset.bind(this)} onCheckout={this.onCheckout.bind(this)} />
 				</div>
 				<ActionModal item={this.props.items[ this.props.editing ]} closeModal={this.closeModal.bind(this)} onItemEdit={this.onItemEdit.bind(this)} />
-				{this.state.recipeModal && <RecipeModal items={this.props.items} onFinished={this.onRecipeModalClose.bind(this)} />}
+				{this.state.recipeModal &&
+				 <RecipeModal items={this.props.items} clientId={this.props.clientId} onFinished={this.onRecipeModalClose.bind(this)} />}
 			</div>
 		);
 	}
@@ -63,31 +64,36 @@ class App extends Component {
 	
 	onRecipeModalClose(){
 		this.props.reset();
-		this.setState({recipeModal:false});
+		this.props.updateClientId();
+		this.setState({recipeModal : false});
 	}
 	
 }
 
 const mapStateToProps = state =>{
 	return {
-		items   : state.items,
-		editing : state.editingId
+		items    : state.items,
+		editing  : state.editingId,
+		clientId : state.clientId
 	}
 };
 
 const mapDispatchToProps = dispatch =>{
 	return {
-		fetchItems : () =>{
+		fetchItems     : () =>{
 			dispatch(fetchItems())
 		},
-		editItem   : ( name, quantity ) =>{
+		editItem       : ( name, quantity ) =>{
 			dispatch(editItem(name, quantity))
 		},
-		selectItem : ( id ) =>{
+		selectItem     : ( id ) =>{
 			dispatch(selectItem(id))
 		},
-		reset      : () =>{
+		reset          : () =>{
 			dispatch(reset())
+		},
+		updateClientId : () =>{
+			dispatch(updateClientId())
 		}
 	}
 };

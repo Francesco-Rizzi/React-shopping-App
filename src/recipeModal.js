@@ -4,10 +4,16 @@ import _ from 'lodash';
 
 export default class RecipeModal extends Component {
 	
+	constructor( props ){
+		super(props);
+		this.state = {printing : false};
+	}
+	
 	render(){
 		
 		return <div className="recipe-modal">
-			<div className="recipe-modal-title">Here's your recipe</div>
+			<div className="recipe-modal-title">Here's your recipe.</div>
+			<div className="recipe-modal-subtitle">(client number: {this.props.clientId})</div>
 			<div className="recipe-modal-body">
 				<table>
 					<thead>
@@ -28,10 +34,15 @@ export default class RecipeModal extends Component {
 				<p className="recipe-modal-body-total">Total: {PriceCalc.getTotalPrice(this.props.items)}$</p>
 			</div>
 			<div className="recipe-modal-cta">
-				<button onClick={this.props.onFinished.bind(this)}>ok</button>
+				<button onClick={this.handlePrint.bind(this)} disabled={this.state.printing}>{this.state.printing ? 'printing...' : 'print' }</button>
 			</div>
 		</div>
 		
+	}
+	
+	handlePrint(){
+		this.setState({printing:true});
+		setTimeout(this.props.onFinished, 1000);
 	}
 	
 }
