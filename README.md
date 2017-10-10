@@ -1,6 +1,6 @@
 # React shopping App 🛒
 
-###### \[this is just an exercise\]
+###### This is just an \[🔬 experiment\].
 
 #### Description:
 A React with Redux exercise on creating a shopping app. [try it live](http://francescorizzi.info/experiments/react-shopping-app)
