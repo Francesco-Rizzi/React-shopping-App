@@ -3,7 +3,7 @@
 ###### This is just an \[🔬 experiment\].
 
 #### Description:
-A React with Redux exercise on creating a shopping app. [try it live](http://francescorizzi.info/experiments/react-shopping-app)
+A React with Redux experiment on creating a shopping app. [try it live](http://francescorizzi.info/experiments/react-shopping-app)
 
 I tried to imagine this app in a **supermarket context**, where there are **touch-screen stations** where (using this software) people can select, order and pre-pay their virtual shopping basket.
 
