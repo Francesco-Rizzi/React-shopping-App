@@ -13,7 +13,7 @@ I tried to imagine this app in a **supermarket context**, where there are **touc
 
 The flow is simple, select or edit what you like, then checkout and get your recipe.
 
- The station will print the repice and then **the software auto-reset itself for a new customer** (updating the customer ID as well).
+ The station will print the recipe and then **the software auto-reset itself for a new customer** (updating the customer ID as well).
 
 Redux manages the state and takes care of keeping all the different UI components updated.
 All transitions are CSS based.
