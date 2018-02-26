@@ -18,12 +18,12 @@ export default class ListItem extends Component {
 		if ( item.discount > 0 ) {
 			
 			return (<span className="app-list-item-price mod-discount">
-				<del>{item.price}</del> {PriceCalc.getItemFinalPrice(item)}$ <span>{item.discount}% off!</span>
+				<del>{item.price.toFixed(2)}</del> {PriceCalc.getItemFinalPrice(item).toFixed(2)}$ <span>{item.discount}% off!</span>
 			</span>);
 			
 		}
 		
-		return <span className="app-list-item-price">{item.price}$</span>;
+		return <span className="app-list-item-price">{item.price.toFixed(2)}$</span>;
 		
 	}
 	

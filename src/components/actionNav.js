@@ -5,16 +5,16 @@ export default class ActionNav extends Component {
 	
 	render(){
 		
-		const items = this.props.items;
+		const {items, onReset, onCheckout} = this.props;
 		const count = PriceCalc.getItemsCount(items);
 		
 		return (<div className="action-nav">
 			
-			<span className="action-nav-text">Selected: {count}, Total price: {PriceCalc.getTotalPrice(items)}$</span>
+			<span className="action-nav-text">{count ? count : 'No'} item{count === 1 ? '' : 's'} selected, for a  total price of {PriceCalc.getTotalPrice(items).toFixed(2)}$.</span>
 			
 			<div className="action-nav-cta">
-				<button onClick={this.props.onReset} className="mod-cancel">reset</button>
-				<button onClick={this.props.onCheckout} className={!count ? 'mod-disabled' : ''}>checkout</button>
+				<button onClick={onReset} className="mod-cancel">reset</button>
+				<button onClick={onCheckout} className={!count ? 'mod-disabled' : ''}>checkout</button>
 			</div>
 			
 		</div>);

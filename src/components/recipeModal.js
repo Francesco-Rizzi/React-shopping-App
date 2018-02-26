@@ -32,11 +32,11 @@ export default class RecipeModal extends Component {
 						{_.map(items, ( item ) => item.quantity > 0 && <tr key={item.id}>
 							<td>{item.quantity}</td>
 							<td>{item.name}</td>
-							<td>{PriceCalc.getTotalPricePerItem(item)}$</td>
+							<td>{PriceCalc.getTotalPricePerItem(item).toFixed(2)}$</td>
 						</tr>)}
 					</tbody>
 				</table>
-				<p className="recipe-modal-body-total">Total: {PriceCalc.getTotalPrice(items)}$</p>
+				<p className="recipe-modal-body-total">Total: {PriceCalc.getTotalPrice(items).toFixed(2)}$</p>
 			</div>
 			
 			<div className="recipe-modal-cta">

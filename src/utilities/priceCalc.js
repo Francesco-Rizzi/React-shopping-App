@@ -9,23 +9,23 @@ export default class PriceCalc {
 		} else {
 			price = item.price;
 		}
-		return Number(price).toFixed(2);
+		return price;
 	}
 	
 	static getItemsCount( items ){
 		return _.reduce(items, ( initial, item ) =>{
-			return initial + Number(item.quantity);
+			return initial + item.quantity;
 		}, 0);
 	}
 	
 	static getTotalPrice( items ){
 		return _.reduce(items, ( initial, item ) =>{
-			return initial + +this.getTotalPricePerItem(item);
+			return initial + this.getTotalPricePerItem(item);
 		}, 0);
 	}
 	
 	static getTotalPricePerItem(item){
-		return (this.getItemFinalPrice(item) * item.quantity).toFixed(2);
+		return this.getItemFinalPrice(item) * item.quantity;
 	}
 	
 }
