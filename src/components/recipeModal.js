@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
-import PriceCalc from './priceCalc';
 import _ from 'lodash';
+import PriceCalc from './../utilities/priceCalc';
 
 export default class RecipeModal extends Component {
 	
@@ -11,9 +11,14 @@ export default class RecipeModal extends Component {
 	
 	render(){
 		
-		return <div className="recipe-modal">
+		const {printing} = this.state;
+		const {clientId, items} = this.props;
+		
+		return (<div className="recipe-modal">
+			
 			<div className="recipe-modal-title">Here's your recipe.</div>
-			<div className="recipe-modal-subtitle">(client number: {this.props.clientId})</div>
+			<div className="recipe-modal-subtitle">Client ID: {clientId}.</div>
+			
 			<div className="recipe-modal-body">
 				<table>
 					<thead>
@@ -24,19 +29,21 @@ export default class RecipeModal extends Component {
 						</tr>
 					</thead>
 					<tbody>
-						{_.map(this.props.items, ( i ) => i.quantity > 0 && <tr key={i.id}>
-							<td>{i.quantity}</td>
-							<td>{i.name}</td>
-							<td>{PriceCalc.getTotalPricePerItem(i)}$</td>
+						{_.map(items, ( item ) => item.quantity > 0 && <tr key={item.id}>
+							<td>{item.quantity}</td>
+							<td>{item.name}</td>
+							<td>{PriceCalc.getTotalPricePerItem(item)}$</td>
 						</tr>)}
 					</tbody>
 				</table>
-				<p className="recipe-modal-body-total">Total: {PriceCalc.getTotalPrice(this.props.items)}$</p>
+				<p className="recipe-modal-body-total">Total: {PriceCalc.getTotalPrice(items)}$</p>
 			</div>
+			
 			<div className="recipe-modal-cta">
-				<button onClick={this.handlePrint.bind(this)} disabled={this.state.printing}>{this.state.printing ? 'printing...' : 'print' }</button>
+				<button onClick={this.handlePrint.bind(this)} disabled={printing}>{printing ? 'printing...' : 'print'}</button>
 			</div>
-		</div>
+			
+		</div>)
 		
 	}
 	

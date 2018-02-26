@@ -1,10 +1,11 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {fetchItems, selectItem, editItem, reset, updateClientId} from './actions';
-import ListItem from './listItem';
-import ActionModal from './actionModal';
-import ActionNav from './actionNav';
-import RecipeModal from './recipeModal';
+import {fetchItems, selectItem, editItem, reset, updateClientId} from './actions/actions';
+
+import ListItem from './components/listItem';
+import ActionModal from './components/actionModal';
+import ActionNav from './components/actionNav';
+import RecipeModal from './components/recipeModal';
 import _ from 'lodash';
 
 class App extends Component {
@@ -15,27 +16,35 @@ class App extends Component {
 	}
 	
 	render(){
-		return (
-			<div className="app">
-				<div className={"app-wrap" + ((this.props.editing || this.state.recipeModal) ? ' mod-editing' : '')}>
-					<div className="app-header">
-						<h1>React ACME Market 🛒</h1>
-						<h2>&bull; select your items before checkout &bull;</h2>
-						<h3>&bull; now serving number: {this.props.clientId} &bull;</h3>
-					</div>
-					<div className='app-body'>
-						<ul className="app-list">
-							{_.map(this.props.items, e =>
-								<ListItem key={e.id} item={e} onItemWillEdit={this.onItemWillEdit.bind(this, e.id)} />)}
-						</ul>
-					</div>
-					<ActionNav items={this.props.items} onReset={this.onReset.bind(this)} onCheckout={this.onCheckout.bind(this)} />
+		
+		const {items, editing, clientId} = this.props;
+		const {recipeModal} = this.state;
+		
+		return (<div className="app">
+			
+			<div className={"app-wrap" + ((editing || recipeModal) ? ' mod-editing' : '')}>
+				
+				<div className="app-header">
+					<h1>React ACME Market 🛒</h1>
+					<h2>&bull; select your items before checkout &bull;</h2>
+					<h3>&bull; now serving number: {clientId} &bull;</h3>
 				</div>
-				<ActionModal item={this.props.items[ this.props.editing ]} closeModal={this.closeModal.bind(this)} onItemEdit={this.onItemEdit.bind(this)} />
-				{this.state.recipeModal &&
-				 <RecipeModal items={this.props.items} clientId={this.props.clientId} onFinished={this.onRecipeModalClose.bind(this)} />}
+				
+				<div className='app-body'>
+					<ul className="app-list">
+						{_.map(items, e => <ListItem key={e.id} item={e} onItemWillEdit={this.onItemWillEdit.bind(this, e.id)} />)}
+					</ul>
+				</div>
+				
+				<ActionNav items={items} onReset={this.onReset.bind(this)} onCheckout={this.onCheckout.bind(this)} />
+				
 			</div>
-		);
+			
+			<ActionModal item={items[ editing ]} closeModal={this.closeModal.bind(this)} onItemEdit={this.onItemEdit.bind(this)} />
+			{recipeModal && <RecipeModal items={items} clientId={clientId} onFinished={this.onRecipeModalClose.bind(this)} />}
+			
+		</div>);
+		
 	}
 	
 	componentWillMount(){

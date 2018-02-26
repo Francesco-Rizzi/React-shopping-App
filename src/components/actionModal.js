@@ -4,25 +4,36 @@ export default class ActionModal extends Component {
 	
 	constructor( props ){
 		super(props);
-		let quantity = (this.props.item && this.props.item.quantity) || 0;
-		this.state   = {val : quantity};
+		this.state = {val: 0};
 	}
 	
 	render(){
 		
-		const item = this.props.item;
+		const {item} = this.props;
 		
 		if ( item ) {
-			return <div className="action-modal">
+			
+			return (<div className="action-modal">
+				
 				<div className="action-modal-title">Select how many <b>{item.name}</b> you want</div>
-				<input className="action-modal-input" type="number" min={0} max={100} value={this.state.quantity} onChange={this.handleChange.bind(this)} />
+				<input className="action-modal-input" type="number" min={0} max={100} value={this.state.val} onChange={this.handleChange.bind(this)} />
+				
 				<div className="action-modal-cta">
 					<button onClick={this.onCancel.bind(this)} className="mod-cancel">cancel</button>
 					<button onClick={this.onEdit.bind(this)}>update</button>
 				</div>
-			</div>
+				
+			</div>);
+			
 		} else {
 			return <div></div>;
+		}
+	}
+	
+	componentWillReceiveProps(){
+		const {item} = this.props;
+		if(item){
+			this.setState({val: this.props.item.quantity})
 		}
 	}
 	
@@ -37,13 +48,17 @@ export default class ActionModal extends Component {
 	}
 	
 	onEdit(){
-		const item = this.props.item;
 		
-		if ( this.state.val > -1 ) {
-			this.props.onItemEdit(item.id, (this.state.val > 100 ? 100 : this.state.val))
+		const {item, onItemEdit} = this.props;
+		const {val} = this.state;
+		
+		if ( val > -1 ) {
+			onItemEdit(item.id, Math.min(val, 100));
 		}
+		
 		this.setState({val : 0});
 		this.props.closeModal();
+		
 	}
 	
 	
