@@ -16,12 +16,17 @@ export default class ActionModal extends Component {
 			return (<div className="action-modal">
 				
 				<div className="action-modal-title">Select how many <b>{item.name}</b> you want</div>
-				<input className="action-modal-input" type="number" min={0} max={100} value={this.state.val} onChange={this.handleChange.bind(this)} />
 				
-				<div className="action-modal-cta">
-					<button onClick={this.onCancel.bind(this)} className="mod-cancel">cancel</button>
-					<button onClick={this.onEdit.bind(this)}>update</button>
-				</div>
+				<form onSubmit={this.onEdit.bind(this)}>
+					
+					<input className="action-modal-input" type="number" min={0} max={100} value={this.state.val} onChange={this.handleChange.bind(this)} />
+					
+					<div className="action-modal-cta">
+						<button type='button' onClick={this.onCancel.bind(this)} className="mod-cancel">cancel</button>
+						<button type='submit' >update</button>
+					</div>
+					
+				</form>
 				
 			</div>);
 			
@@ -30,10 +35,11 @@ export default class ActionModal extends Component {
 		}
 	}
 	
-	componentWillReceiveProps(){
-		const {item} = this.props;
+	componentWillReceiveProps( nextProps){
+		const {item} = nextProps;
+		
 		if(item){
-			this.setState({val: this.props.item.quantity})
+			this.setState({val: item.quantity})
 		}
 	}
 	

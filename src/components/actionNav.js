@@ -14,7 +14,7 @@ export default class ActionNav extends Component {
 			
 			<div className="action-nav-cta">
 				<button onClick={this.props.onReset} className="mod-cancel">reset</button>
-				<button onClick={count && this.props.onCheckout} className={!count && 'mod-disabled'}>checkout</button>
+				<button onClick={this.props.onCheckout} className={!count ? 'mod-disabled' : ''}>checkout</button>
 			</div>
 			
 		</div>);
