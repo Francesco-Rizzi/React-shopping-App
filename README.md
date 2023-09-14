@@ -3,7 +3,7 @@
 ###### This is just an \[🔬 experiment\].
 
 #### Description:
-A React with Redux experiment on creating a shopping app. [try it live](https://frarizzi.science/experiments/react-shopping-app/)
+A React with Redux experiment on creating a shopping app.
 
 I tried to imagine this app in a **supermarket context**, where there are **touch-screen stations** where (using this software) people can select, order and pre-pay their virtual shopping basket.
 
@@ -29,5 +29,5 @@ All transitions are CSS based.
 - created with [react-create-app](https://github.com/facebookincubator/create-react-app)
 
 #### How to use:
-- download (or see it live [here](https://frarizzi.science/experiments/react-shopping-app/))
+- download
 - `yarn install && yarn start`
